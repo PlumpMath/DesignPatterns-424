@@ -1,5 +1,4 @@
 require_relative 'play_how.rb'
-require_relative 'PlayingStrategies/smart_play.rb'
 require_relative 'PlayingStrategies/random_play.rb'
 require_relative 'PlayingStrategies/linear_play.rb'
 require_relative 'PlayingStrategies/random_smart_play.rb'
