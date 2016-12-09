@@ -40,14 +40,16 @@ public class Invoice {
 
 	@Override
 	public String toString() {
-		String output = "Component_Name\tComponent_Cost\n---------------------\n";
+		String output = "--------- SHOP NAME : " + shopName + " ----------\n" + 
+	"CLIENT NAME : " + clientName + "\n"
+				+ "Component_Name\tComponent_Cost\n---------------------\n";
 
 		for (Buyable item : purchased) {
 			output += (item.getName()) + " " + item.getCost() + "\n";
 		}
-		if (percentDiscount > 0.0) {
-			output += "Discount : " + (percentDiscount * 100) + "%\n";
-		}
+
+		output += "Discount : " + (percentDiscount * 100) + "%\n";
+
 		output += "--------------------\nTotal Cost : " + calculateTotalCost() + "\n";
 
 		return output;
