@@ -1,6 +1,7 @@
 package com.ucd.invoice;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class Invoice {
@@ -13,6 +14,7 @@ public class Invoice {
 		this.percentDiscount = percentDiscount;
 		this.paymentMode = paymentMode;
 		this.purchased = purchased;
+		this.invoiceId = System.currentTimeMillis();
 	}
 
 	public double calculateTotalCost() {
@@ -41,6 +43,7 @@ public class Invoice {
 	@Override
 	public String toString() {
 		String output = "--------- SHOP NAME : " + shopName + " ----------\n" + 
+	"--------- INVOICE ID : " + invoiceId + " ----------\n" +
 	"CLIENT NAME : " + clientName + "\n"
 				+ "Component_Name\tComponent_Cost\n---------------------\n";
 
@@ -93,6 +96,10 @@ public class Invoice {
 	public double getPercentDiscount() {
 		return percentDiscount;
 	}
+	
+	public Long getInvoiceId() {
+		return invoiceId;
+	}
 
 	public static class InvoiceBuilder {
 
@@ -120,18 +127,22 @@ public class Invoice {
 			purchased.add(newItem);
 			return this;
 		}
+		
+		public InvoiceBuilder items(List<Buyable> items){
+			purchased.addAll(items);
+			return this;
+		}
 
 		public Invoice generateInvoice() {
 			return new Invoice(shopName, clientName, percentDiscount, paymentMode, purchased);
 		}
-
 		private List<Buyable> purchased = new ArrayList<>();
 		private String shopName = "";
 		private String clientName = "";
 		private double percentDiscount;
 		private PaymentMode paymentMode;
 	}
-
+	private Long invoiceId;
 	private List<Buyable> purchased;
 	private String shopName;
 	private String clientName;

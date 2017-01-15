@@ -1,18 +1,30 @@
 package com.ucd.furniture;
 
-public class Block implements Furniture {
-	
-	
-	public Block(double width, double height){
+import com.ucd.architectures.DefaultStyle;
+import com.ucd.architectures.Style;
+
+public class Block extends Furniture {
+
+	public Block(double length ,double width, double height) {
+		super(new DefaultStyle());
+		this.length = length;
 		this.width = width;
 		this.height = height;
 	}
+	
+	public Block(double length ,double width, double height,Style archStyle) {
+		super(archStyle);
+		this.length = length;
+		this.width = width;
+		this.height = height;
+	}
+	
+ 
 
 	@Override
 	public double getCost() {
 		return COST;
-		}
-
+	}
 
 	@Override
 	public String getName() {
@@ -26,13 +38,22 @@ public class Block implements Furniture {
 
 	@Override
 	public double getHeight() {
-		
+
 		return height;
 	}
-	private String NAME = "Block";
-	private double COST = 10.00, width , height;
-	
-	
 
+	@Override
+	public double getLength() {
+		return length;
+	}
+	
+	
+	@Override
+	public void applyStyle(){
+		archStyle.applyStyle();
+	}
+
+	private String NAME = "Block";
+	private double COST = 10.00, length,width, height;
 
 }

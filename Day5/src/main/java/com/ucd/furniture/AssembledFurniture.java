@@ -3,10 +3,12 @@ package com.ucd.furniture;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AssembledFurniture implements Furniture {
+import com.ucd.architectures.DefaultStyle;
 
+public class AssembledFurniture extends Furniture {
 
 	private AssembledFurniture(Furniture... elements) {
+		super(new DefaultStyle());
 		if (furnitures == null) {
 			furnitures = new ArrayList<Furniture>();
 		}
@@ -83,7 +85,28 @@ public class AssembledFurniture implements Furniture {
 		return height;
 	}
 	
-	private List<Furniture> furnitures;
 
+	@Override
+	public double getLength() {
+		double length = 0;
+		if (furnitures != null) {
+			for (Furniture f : furnitures) {
+				length += f.getLength();
+			}
+		}
+		return length;
+	}
+	
+	
+	@Override
+	public void applyStyle(){
+		if (furnitures != null) {
+			for (Furniture f : furnitures) {
+				f.applyStyle();
+			}
+		}
+	}
+
+	private List<Furniture> furnitures;
 
 }

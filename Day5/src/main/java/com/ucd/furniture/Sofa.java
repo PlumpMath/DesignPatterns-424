@@ -3,16 +3,15 @@ package com.ucd.furniture;
 import com.ucd.architectures.DefaultStyle;
 import com.ucd.architectures.Style;
 
-public class Door extends Furniture {
-
-	public Door(double length, double width, double height) {
+public class Sofa extends Furniture {
+	public Sofa(double length, double width, double height) {
 		super(new DefaultStyle());
 		this.length = length;
 		this.width = width;
 		this.height = height;
 	}
 
-	public Door(double length, double width, double height, Style archStyle) {
+	public Sofa(double length, double width, double height, Style archStyle) {
 		super(archStyle);
 		this.length = length;
 		this.width = width;
@@ -20,13 +19,13 @@ public class Door extends Furniture {
 	}
 
 	@Override
-	public String getName() {
-		return NAME;
+	public double getCost() {
+		return COST;
 	}
 
 	@Override
-	public double getCost() {
-		return COST;
+	public String getName() {
+		return NAME;
 	}
 
 	@Override
@@ -50,6 +49,7 @@ public class Door extends Furniture {
 		archStyle.applyStyle();
 	}
 
-	private String NAME = "Door";
-	private double COST = 12.50, length, width, height;
+	private String NAME = "Sofa";
+	private double COST = 20.00, length, width, height;
+
 }
